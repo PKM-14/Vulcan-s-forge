@@ -3,102 +3,532 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vulcan's Forge | Image Set</title>
+<title>Vulcan's Forge | Custom 3D Printing, UK</title>
+<meta name="description" content="UK-based 3D printing service. FDM printing, functional prototyping and small batch manufacturing, manufactured to specification. Request a quote.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 <style>
-  :root{--ink:#15161a;--steel:#62656e;--line:#d8dadf;--panel:#f4f5f6;--orange:#D2531B;}
-  *{box-sizing:border-box;}
-  body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,sans-serif;color:#2a2c33;background:#fff;line-height:1.55;}
-  header{border-top:3px solid var(--orange);border-bottom:1px solid var(--line);padding:22px 28px;}
-  header h1{margin:0;font-size:20px;color:var(--ink);letter-spacing:-0.01em;}
-  header p{margin:6px 0 0;font-size:14px;color:var(--steel);}
-  .wrap{max-width:1080px;margin:0 auto;padding:28px;}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px;}
-  .card{border:1px solid var(--line);border-radius:3px;overflow:hidden;background:#fff;}
-  .card .img{background:var(--panel);border-bottom:1px solid var(--line);}
-  .card .img img{display:block;width:100%;height:auto;}
-  .card .meta{padding:12px 14px;}
-  .card .name{font-weight:600;color:var(--ink);font-size:15px;}
-  .card .dim{font-size:12.5px;color:var(--steel);margin-top:2px;}
-  .card .dl{margin-top:10px;font-size:13px;}
-  .card .dl a{color:var(--orange);text-decoration:none;font-weight:500;border:1px solid var(--line);
-    padding:4px 10px;border-radius:2px;margin-right:6px;display:inline-block;}
-  .card .dl a:hover{border-color:var(--orange);}
-  .note{font-size:13px;color:var(--steel);margin:0 0 24px;max-width:60ch;}
+/* ============================================================
+   VULCAN'S FORGE
+   Industrial, minimal, document-like. One accent, one CTA.
+   ============================================================ */
+:root{
+  --black:   #15161a;   /* near-black text + structure */
+  --ink:     #2a2c33;   /* body text */
+  --steel:   #62656e;   /* secondary text */
+  --line:    #d8dadf;   /* hairline rules */
+  --line-2:  #e7e8ec;   /* lighter rules */
+  --panel:   #f4f5f6;   /* recessed panels */
+  --white:   #ffffff;
+  --orange:  #D2531B;   /* single accent, reserved for primary CTA */
+  --orange-d:#b8440f;
+  --sans: "Inter", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --max: 1080px;
+}
+
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{transition:none!important;} }
+
+body{
+  margin:0;
+  font-family:var(--sans);
+  color:var(--ink);
+  background:var(--white);
+  font-size:17px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+
+h1,h2,h3{color:var(--black);margin:0;font-weight:600;line-height:1.15;letter-spacing:-0.01em;}
+p{margin:0 0 1rem;}
+a{color:inherit;}
+
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px;}
+
+/* section label — small, factual, sits above each section heading */
+.label{
+  font-size:12px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;
+  color:var(--steel);margin:0 0 14px;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+header{
+  border-top:3px solid var(--orange);
+  border-bottom:1px solid var(--line);
+  background:var(--white);
+  position:sticky;top:0;z-index:30;
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px;}
+.brand{font-weight:700;font-size:18px;letter-spacing:-0.01em;color:var(--black);text-decoration:none;}
+.brand span{color:var(--steel);font-weight:500;font-size:12.5px;letter-spacing:0.08em;
+  text-transform:uppercase;margin-left:8px;}
+.nav-links{display:flex;gap:30px;align-items:center;}
+.nav-links a{font-size:15px;text-decoration:none;color:var(--ink);font-weight:500;}
+.nav-links a:hover{color:var(--black);}
+.nav-cta{
+  background:var(--orange);color:#fff!important;text-decoration:none;
+  font-size:14px;font-weight:600;padding:9px 16px;border-radius:2px;
+  transition:background .15s ease;
+}
+.nav-cta:hover{background:var(--orange-d);}
+.menu-toggle{display:none;background:none;border:1px solid var(--line);border-radius:2px;
+  font-size:14px;padding:8px 12px;cursor:pointer;color:var(--black);font-family:inherit;}
+@media (max-width:720px){
+  .nav-links{position:absolute;top:66px;left:0;right:0;background:var(--white);
+    border-bottom:1px solid var(--line);flex-direction:column;align-items:stretch;
+    gap:0;padding:6px 24px 16px;display:none;}
+  .nav-links.open{display:flex;}
+  .nav-links a{padding:13px 0;border-bottom:1px solid var(--line-2);}
+  .nav-cta{margin-top:12px;text-align:center;}
+  .menu-toggle{display:block;}
+}
+
+/* ============================================================
+   HERO  — one message, one supporting line, one CTA
+   ============================================================ */
+.hero{padding:84px 0 76px;border-bottom:1px solid var(--line);}
+.hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;}
+@media (max-width:820px){.hero-grid{grid-template-columns:1fr;gap:36px;}}
+.hero .label{color:var(--orange-d);}
+.hero h1{
+  font-size:clamp(34px,5.4vw,56px);
+  font-weight:700;
+  letter-spacing:-0.025em;
+  max-width:16ch;
+  margin-bottom:22px;
+}
+.hero p{
+  font-size:clamp(17px,2vw,20px);
+  color:var(--steel);
+  max-width:50ch;
+  margin-bottom:32px;
+}
+.hero-img{border:1px solid var(--line);background:var(--panel);border-radius:3px;overflow:hidden;}
+.hero-img img{width:100%;height:auto;display:block;}
+@media (max-width:820px){.hero-img{max-width:420px;}}
+.btn{
+  display:inline-block;background:var(--orange);color:#fff;text-decoration:none;
+  font-size:16px;font-weight:600;padding:15px 30px;border-radius:2px;border:none;cursor:pointer;
+  font-family:inherit;transition:background .15s ease;
+}
+.btn:hover{background:var(--orange-d);}
+.hero .reassure{
+  margin:24px 0 0;font-size:14.5px;color:var(--steel);
+}
+.hero .reassure b{color:var(--black);font-weight:600;}
+
+/* ============================================================
+   SECTION SHELL
+   ============================================================ */
+section{padding:72px 0;border-bottom:1px solid var(--line);}
+.sec-title{font-size:clamp(24px,3vw,32px);font-weight:600;margin-bottom:40px;max-width:24ch;}
+
+/* ============================================================
+   SERVICES — four plain entries, no hover theatrics
+   ============================================================ */
+.services-grid{
+  display:grid;grid-template-columns:1fr 1fr;
+  border-top:1px solid var(--line);border-left:1px solid var(--line);
+}
+.service{
+  border-right:1px solid var(--line);border-bottom:1px solid var(--line);
+  padding:30px 28px;
+}
+@media (max-width:680px){
+  .services-grid{grid-template-columns:1fr;}
+}
+.service h3{font-size:20px;font-weight:600;margin-bottom:10px;}
+.service h3 .tag{font-size:12.5px;font-weight:500;color:var(--steel);letter-spacing:0.06em;
+  text-transform:uppercase;margin-left:8px;}
+.service p{font-size:15.5px;color:var(--steel);margin:0 0 16px;max-width:44ch;}
+.service dl{margin:0;font-size:14px;}
+.service .spec{display:flex;justify-content:space-between;gap:16px;
+  padding:7px 0;border-top:1px solid var(--line-2);}
+.service .spec dt{color:var(--steel);margin:0;}
+.service .spec dd{color:var(--ink);margin:0;font-weight:500;text-align:right;}
+
+/* ============================================================
+   PROCESS — four steps, linear, no animation
+   ============================================================ */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+  border:1px solid var(--line);}
+@media (max-width:760px){.process-grid{grid-template-columns:1fr 1fr;}}
+@media (max-width:440px){.process-grid{grid-template-columns:1fr;}}
+.step{padding:26px 24px;border-right:1px solid var(--line);}
+.process-grid .step:last-child{border-right:none;}
+@media (max-width:760px){
+  .step:nth-child(2){border-right:none;}
+  .step:nth-child(1),.step:nth-child(2){border-bottom:1px solid var(--line);}
+}
+@media (max-width:440px){
+  .step{border-right:none;border-bottom:1px solid var(--line);}
+  .step:last-child{border-bottom:none;}
+}
+.step .n{font-size:13px;font-weight:700;color:var(--orange-d);letter-spacing:0.08em;}
+.step h3{font-size:17px;font-weight:600;margin:14px 0 8px;}
+.step p{font-size:14.5px;color:var(--steel);margin:0;}
+
+/* ============================================================
+   GALLERY — minimal grid, photo placeholders
+   ============================================================ */
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+@media (max-width:760px){.gallery-grid{grid-template-columns:repeat(2,1fr);}}
+@media (max-width:460px){.gallery-grid{grid-template-columns:1fr;}}
+.tile{border:1px solid var(--line);background:var(--white);}
+.tile .ph{
+  aspect-ratio:4/3;background:var(--panel);border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.tile .ph img{width:100%;height:100%;object-fit:cover;display:block;}
+.tile .cap{padding:14px 16px;}
+.tile .cap h3{font-size:15.5px;font-weight:600;margin:0 0 4px;}
+.tile .cap p{font-size:13.5px;color:var(--steel);margin:0;}
+.gallery-note{font-size:13.5px;color:var(--steel);margin:20px 0 0;}
+
+/* ============================================================
+   CONTACT — simple form only
+   ============================================================ */
+.contact-grid{display:grid;grid-template-columns:1fr 1.15fr;gap:54px;}
+@media (max-width:760px){.contact-grid{grid-template-columns:1fr;gap:32px;}}
+.contact-intro p{color:var(--steel);font-size:16px;max-width:36ch;}
+.contact-intro .direct{margin-top:24px;font-size:15px;line-height:1.9;}
+.contact-intro .direct a{color:var(--orange-d);text-decoration:none;font-weight:500;}
+.contact-intro .direct a:hover{text-decoration:underline;}
+.contact-intro .direct .k{color:var(--steel);display:block;font-size:13px;
+  text-transform:uppercase;letter-spacing:0.08em;margin-top:14px;}
+
+.field{margin-bottom:18px;}
+.field label{display:block;font-size:14px;font-weight:500;color:var(--black);margin-bottom:6px;}
+.field label .req{color:var(--orange-d);}
+.field input,.field select,.field textarea{
+  width:100%;font-family:inherit;font-size:15.5px;color:var(--ink);
+  background:var(--white);border:1px solid var(--line);border-radius:2px;
+  padding:11px 13px;transition:border-color .15s ease;
+}
+.field textarea{resize:vertical;min-height:120px;}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:none;border-color:var(--black);
+}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+@media (max-width:480px){.two{grid-template-columns:1fr;}}
+.field .help{font-size:12.5px;color:var(--steel);margin-top:6px;}
+.form-foot{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:4px;}
+.form-foot .note{font-size:12.5px;color:var(--steel);max-width:30ch;}
+.confirm{display:none;border:1px solid var(--line);background:var(--panel);
+  border-radius:2px;padding:18px 20px;font-size:15px;line-height:1.6;margin-bottom:22px;}
+.confirm.show{display:block;}
+.confirm b{color:var(--black);}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+footer{background:var(--black);color:#c8cad0;border-bottom:none;padding:40px 0 34px;}
+footer .ft{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;align-items:baseline;}
+footer .brand-f{color:#fff;font-weight:700;font-size:17px;}
+footer .meta{font-size:13.5px;color:#888b93;}
+footer a{color:#c8cad0;text-decoration:none;}
+footer a:hover{color:#fff;}
+footer .ft-links{display:flex;gap:24px;font-size:14px;}
+
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--orange);outline-offset:2px;
+}
 </style>
 </head>
 <body>
+
+<!-- ===================== HEADER ===================== -->
 <header>
-  <h1>Vulcan's Forge — Image Set</h1>
-  <p>7 images, supplied as PNG and JPEG. Used across the website hero and gallery.</p>
-</header>
-<div class="wrap">
-  <p class="note">These are clean vector-built illustrations rendered to raster. Replace any of them with photographs of real prints by dropping a file with the same name into this folder.</p>
-  <div class="grid">
-
-    <div class="card">
-      <div class="img"><img src="printer.png" alt="FDM printer"></div>
-      <div class="meta">
-        <div class="name">printer</div>
-        <div class="dim">1280 × 1040 px · hero image</div>
-        <div class="dl"><a href="printer.png" download>PNG</a><a href="printer.jpg" download>JPEG</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="img"><img src="part-bracket.png" alt="Drive housing bracket"></div>
-      <div class="meta">
-        <div class="name">part-bracket</div>
-        <div class="dim">800 × 600 px · gallery</div>
-        <div class="dl"><a href="part-bracket.png" download>PNG</a><a href="part-bracket.jpg" download>JPEG</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="img"><img src="part-enclosure.png" alt="Sensor enclosure"></div>
-      <div class="meta">
-        <div class="name">part-enclosure</div>
-        <div class="dim">800 × 600 px · gallery</div>
-        <div class="dl"><a href="part-enclosure.png" download>PNG</a><a href="part-enclosure.jpg" download>JPEG</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="img"><img src="part-jig.png" alt="Assembly jig"></div>
-      <div class="meta">
-        <div class="name">part-jig</div>
-        <div class="dim">800 × 600 px · gallery</div>
-        <div class="dl"><a href="part-jig.png" download>PNG</a><a href="part-jig.jpg" download>JPEG</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="img"><img src="part-gear.png" alt="Replacement gear, 24 teeth"></div>
-      <div class="meta">
-        <div class="name">part-gear</div>
-        <div class="dim">800 × 600 px · gallery</div>
-        <div class="dl"><a href="part-gear.png" download>PNG</a><a href="part-gear.jpg" download>JPEG</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="img"><img src="part-clip.png" alt="Cable management clip"></div>
-      <div class="meta">
-        <div class="name">part-clip</div>
-        <div class="dim">800 × 600 px · gallery</div>
-        <div class="dl"><a href="part-clip.png" download>PNG</a><a href="part-clip.jpg" download>JPEG</a></div>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="img"><img src="part-shroud.png" alt="Fan duct shroud"></div>
-      <div class="meta">
-        <div class="name">part-shroud</div>
-        <div class="dim">800 × 600 px · gallery</div>
-        <div class="dl"><a href="part-shroud.png" download>PNG</a><a href="part-shroud.jpg" download>JPEG</a></div>
-      </div>
-    </div>
-
+  <div class="wrap nav">
+    <a class="brand" href="#top">Vulcan's Forge<span>3D Printing</span></a>
+    <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navlinks">Menu</button>
+    <nav class="nav-links" id="navlinks">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#work">Work</a>
+      <a class="nav-cta" href="#contact">Request a Quote</a>
+    </nav>
   </div>
-</div>
+</header>
+
+<main id="top">
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="label">UK-based 3D printing &middot; Kent</p>
+      <h1>Custom 3D printed parts, manufactured to specification.</h1>
+      <p>FDM printing for functional prototypes, replacement parts and small production runs. Send a CAD file and receive a costed quote within one business day.</p>
+      <a class="btn" href="#contact">Request a Quote</a>
+      <p class="reassure"><b>No minimum order.</b> &nbsp;UK tracked despatch. &nbsp;Tolerance-focused printing from &plusmn;0.15&nbsp;mm.</p>
+    </div>
+    <div class="hero-img">
+      <img src="images/printer.png" alt="FDM 3D printer building a part on the bed" width="640" height="520">
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES ===================== -->
+<section id="services">
+  <div class="wrap">
+    <p class="label">Services</p>
+    <h2 class="sec-title">FDM printing for functional parts</h2>
+
+    <div class="services-grid">
+      <div class="service">
+        <h3>FDM printing<span class="tag">FFF</span></h3>
+        <p>Durable, load-bearing parts in engineering-grade thermoplastics. Suited to brackets, jigs, enclosures and functional prototypes.</p>
+        <dl>
+          <div class="spec"><dt>Materials</dt><dd>PLA, PETG, ABS, ASA, Nylon, PC</dd></div>
+          <div class="spec"><dt>Layer height</dt><dd>0.10&ndash;0.30 mm</dd></div>
+          <div class="spec"><dt>Max size</dt><dd>300 &times; 300 &times; 340 mm</dd></div>
+        </dl>
+      </div>
+
+      <div class="service">
+        <h3>Material selection<span class="tag">18 filaments</span></h3>
+        <p>The right plastic is half the part. We match material to load, temperature and environment, from everyday PLA to engineering-grade options.</p>
+        <dl>
+          <div class="spec"><dt>Standard</dt><dd>PLA, PETG, ABS, ASA</dd></div>
+          <div class="spec"><dt>Engineering</dt><dd>Nylon PA12, PC, CF blends</dd></div>
+          <div class="spec"><dt>Flexible</dt><dd>TPU 95A</dd></div>
+        </dl>
+      </div>
+
+      <div class="service">
+        <h3>Functional prototyping<span class="tag">Iterative</span></h3>
+        <p>Design-for-print review and fast iteration so you can test fit and function before committing to a final design.</p>
+        <dl>
+          <div class="spec"><dt>Turnaround</dt><dd>24&ndash;72 h per revision</dd></div>
+          <div class="spec"><dt>Input formats</dt><dd>STEP, STL, 3MF, IGES</dd></div>
+          <div class="spec"><dt>DFM review</dt><dd>Included</dd></div>
+        </dl>
+      </div>
+
+      <div class="service">
+        <h3>Small batch manufacturing<span class="tag">10&ndash;500 off</span></h3>
+        <p>Repeatable short runs with locked profiles and documented parameters. Per-unit pricing reduces as volume increases.</p>
+        <dl>
+          <div class="spec"><dt>Run size</dt><dd>10&ndash;500 units</dd></div>
+          <div class="spec"><dt>Consistency</dt><dd>Fixed print profiles</dd></div>
+          <div class="spec"><dt>Quality check</dt><dd>Sampled dimensional</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== PROCESS ===================== -->
+<section id="process">
+  <div class="wrap">
+    <p class="label">Process</p>
+    <h2 class="sec-title">From file to delivery</h2>
+
+    <div class="process-grid">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Upload file</h3>
+        <p>Send your CAD model with quantity, material and any critical dimensions.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Quote</h3>
+        <p>We review printability and return a fixed price and lead time for approval.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Print</h3>
+        <p>Parts are printed to the agreed profile, then cleaned and finished.</p>
+      </div>
+      <div class="step">
+        <div class="n">04</div>
+        <h3>Delivery</h3>
+        <p>Dimensionally checked, packed and despatched on a UK tracked service.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== GALLERY ===================== -->
+<section id="work">
+  <div class="wrap">
+    <p class="label">Work</p>
+    <h2 class="sec-title">Sample parts</h2>
+
+    <div class="gallery-grid">
+      <div class="tile"><div class="ph"><img src="images/part-bracket.png" alt="Drive housing bracket"></div><div class="cap"><h3>Drive housing bracket</h3><p>FDM &middot; PETG &middot; 0.16 mm</p></div></div>
+      <div class="tile"><div class="ph"><img src="images/part-enclosure.png" alt="Sensor enclosure"></div><div class="cap"><h3>Sensor enclosure</h3><p>FDM &middot; ASA &middot; 0.12 mm</p></div></div>
+      <div class="tile"><div class="ph"><img src="images/part-jig.png" alt="Assembly jig"></div><div class="cap"><h3>Assembly jig</h3><p>FDM &middot; ASA &middot; 0.20 mm</p></div></div>
+      <div class="tile"><div class="ph"><img src="images/part-gear.png" alt="Replacement gear, 24 teeth"></div><div class="cap"><h3>Replacement gear, 24T</h3><p>FDM &middot; Nylon &middot; 0.12 mm</p></div></div>
+      <div class="tile"><div class="ph"><img src="images/part-clip.png" alt="Cable management clip"></div><div class="cap"><h3>Cable management clip</h3><p>FDM &middot; PLA &middot; batch &times;150</p></div></div>
+      <div class="tile"><div class="ph"><img src="images/part-shroud.png" alt="Fan duct shroud"></div><div class="cap"><h3>Fan duct shroud</h3><p>FDM &middot; PETG &middot; 0.16 mm</p></div></div>
+    </div>
+    <p class="gallery-note">Illustrations shown. Replace with photographs of finished parts on a neutral background.</p>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact">
+  <div class="wrap">
+    <p class="label">Contact</p>
+    <h2 class="sec-title">Request a quote</h2>
+
+    <div class="contact-grid">
+      <div class="contact-intro">
+        <p>Tell us about the part. We reply with a material recommendation and a fixed price, usually within one business day.</p>
+        <div class="direct">
+          <span class="k">Email</span>
+          <a href="mailto:4pranit.malhotra@gmail.com">4pranit.malhotra@gmail.com</a>
+          <span class="k">Phone</span>
+          <a href="tel:+441732000000">+44 1732 000 000</a>
+          <span class="k">Hours</span>
+          Mon&ndash;Fri, 09:00&ndash;17:30
+        </div>
+      </div>
+
+      <form id="quoteForm" novalidate>
+        <div class="confirm" id="confirm" role="status" aria-live="polite">
+          <b>Request ready to send.</b> Your email app should open with the details filled in. Attach your CAD file and send, and we'll reply with a quote within one business day. If nothing opened, email us at the address shown.
+        </div>
+
+        <div class="two">
+          <div class="field">
+            <label for="name">Name <span class="req">*</span></label>
+            <input type="text" id="name" name="name" autocomplete="name" required>
+          </div>
+          <div class="field">
+            <label for="email">Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" autocomplete="email" required>
+          </div>
+        </div>
+
+        <div class="two">
+          <div class="field">
+            <label for="service">Service</label>
+            <select id="service" name="service">
+              <option value="recommend">Recommend for me</option>
+              <option value="fdm">FDM printing</option>
+              <option value="prototyping">Functional prototyping</option>
+              <option value="batch">Small batch manufacturing</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="qty">Quantity</label>
+            <input type="number" id="qty" name="qty" min="1" value="1">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="material">Material preference</label>
+          <input type="text" id="material" name="material" placeholder="e.g. PETG, Nylon, ASA, TPU, or leave blank">
+        </div>
+
+        <div class="field">
+          <label for="details">Part details <span class="req">*</span></label>
+          <textarea id="details" name="details" required placeholder="What is the part, how is it used, and are there any critical dimensions or tolerances?"></textarea>
+        </div>
+
+        <div class="field">
+          <label for="file">CAD file</label>
+          <input type="file" id="file" name="file" accept=".step,.stp,.stl,.3mf,.iges,.igs">
+          <p class="help">STEP, STL, 3MF or IGES. No file yet? Send this form and email it after.</p>
+        </div>
+
+        <div class="form-foot">
+          <button type="submit" class="btn">Request a Quote</button>
+          <span class="note">No obligation. Your files and details are not shared with third parties.</span>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer>
+  <div class="wrap ft">
+    <span class="brand-f">Vulcan's Forge</span>
+    <div class="ft-links">
+      <a href="#services">Services</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Request a Quote</a>
+    </div>
+    <span class="meta">Tonbridge, Kent, UK &middot; Est. 2022 &middot; VAT registered</span>
+  </div>
+</footer>
+
+<script>
+  // mobile menu
+  (function(){
+    var t = document.getElementById('menuToggle');
+    var n = document.getElementById('navlinks');
+    t.addEventListener('click', function(){
+      var open = n.classList.toggle('open');
+      t.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+    n.querySelectorAll('a').forEach(function(a){
+      a.addEventListener('click', function(){ n.classList.remove('open'); t.setAttribute('aria-expanded','false'); });
+    });
+  })();
+
+  // quote form -> opens mail client addressed to the shop.
+  // mailto cannot attach files; the confirmation asks the sender to attach.
+  // For automatic file handling, wire to a backend or Formspree instead.
+  (function(){
+    var form = document.getElementById('quoteForm');
+    var confirmBox = document.getElementById('confirm');
+    var SHOP_EMAIL = '4pranit.malhotra@gmail.com';
+
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+
+      var valid = true;
+      form.querySelectorAll('[required]').forEach(function(f){
+        if(!f.value.trim()){ valid = false; f.style.borderColor = 'var(--orange)'; }
+        else { f.style.borderColor = ''; }
+      });
+      var email = document.getElementById('email');
+      if(email.value && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)){
+        valid = false; email.style.borderColor = 'var(--orange)';
+      }
+      if(!valid) return;
+
+      var v = function(id){ var el = document.getElementById(id); return el ? el.value.trim() : ''; };
+      var fileEl = document.getElementById('file');
+      var fileName = (fileEl && fileEl.files && fileEl.files.length) ? fileEl.files[0].name : 'none selected';
+
+      var body = [
+        'Quote request from the Vulcan\u2019s Forge website',
+        '----------------------------------------',
+        'Name:      ' + v('name'),
+        'Email:     ' + v('email'),
+        'Service:   ' + v('service'),
+        'Quantity:  ' + v('qty'),
+        'Material:  ' + (v('material') || 'Recommend for me'),
+        'CAD file:  ' + fileName + '  (please attach to this email)',
+        '',
+        'Part details:',
+        v('details')
+      ].join('\r\n');
+
+      window.location.href = 'mailto:' + SHOP_EMAIL +
+        '?subject=' + encodeURIComponent('Quote request \u2013 ' + (v('name') || 'new part')) +
+        '&body=' + encodeURIComponent(body);
+
+      confirmBox.classList.add('show');
+      confirmBox.scrollIntoView({behavior:'smooth', block:'center'});
+    });
+  })();
+</script>
+
 </body>
 </html>
