@@ -1,0 +1,22 @@
+<svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fan duct shroud">
+  <rect width="400" height="300" fill="#f4f5f6"/>
+  <g stroke="#15161a" stroke-width="2.4" stroke-linejoin="round">
+    <!-- outer ring -->
+    <circle cx="200" cy="150" r="78" fill="#e7e8ec"/>
+    <circle cx="200" cy="150" r="78" fill="none" stroke="#15161a" stroke-width="2.4"/>
+    <!-- inner bore -->
+    <circle cx="200" cy="150" r="40" fill="#f4f5f6" stroke="#62656e" stroke-width="2"/>
+  </g>
+  <!-- mounting tabs -->
+  <g fill="#d8dadf" stroke="#15161a" stroke-width="2.2">
+    <rect x="120" y="142" width="22" height="16" rx="2"/>
+    <rect x="258" y="142" width="22" height="16" rx="2"/>
+    <rect x="192" y="62" width="16" height="22" rx="2"/>
+    <rect x="192" y="216" width="16" height="22" rx="2"/>
+  </g>
+  <!-- directional vanes -->
+  <g stroke="#D2531B" stroke-width="2.4" stroke-linecap="round" fill="none">
+    <path d="M200 110 A40 40 0 0 1 240 150"/>
+    <path d="M200 190 A40 40 0 0 1 160 150"/>
+  </g>
+</svg>
